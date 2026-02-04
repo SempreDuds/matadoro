@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://csvetve6duuh4"]
+
+[ext_resource type="Script" uid="uid://deopcim373xm2" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3pqv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqtel"]
+size = Vector3(0.5, 1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
+
+[node name="Node3D" type="Node3D" unique_id=113073330]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1004927415 groups=["player"]]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1608348888]
+shape = SubResource("CapsuleShape3D_i3pqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=206790044]
+mesh = SubResource("CapsuleMesh_onrkg")
+
+[node name="PivoCamera" type="Node3D" parent="Player" unique_id=285074254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9225162, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/PivoCamera" unique_id=1812581197]
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/PivoCamera" unique_id=1660224872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5987935, 0.77397656)
+
+[node name="Mao" type="Node3D" parent="Player" unique_id=877181630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8281388)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Mao" unique_id=171640789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7738403)
+mesh = SubResource("BoxMesh_hqtel")
+
+[node name="AreaEspada" type="Area3D" parent="Player/Mao" unique_id=664768049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0029762983)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Mao/AreaEspada" unique_id=1980177782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7785245)
+shape = SubResource("BoxShape3D_sweqy")

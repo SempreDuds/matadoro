@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dkfaf8ma7u5u7"]
+
+[ext_resource type="Script" uid="uid://dnrntudidu1ne" path="res://inimigo.gd" id="1_030df"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1su0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_030df"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0b8xr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g45jm"]
+size = Vector3(1.5, 1, 1.5)
+
+[node name="Node3D" type="Node3D" unique_id=357245756]
+
+[node name="Inimigo" type="CharacterBody3D" parent="." unique_id=2001231184 groups=["inimigo"]]
+script = ExtResource("1_030df")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inimigo" unique_id=1034601973]
+mesh = SubResource("BoxMesh_1su0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_030df")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inimigo" unique_id=829561578]
+shape = SubResource("BoxShape3D_0b8xr")
+
+[node name="AreaAtaque" type="Area3D" parent="Inimigo" unique_id=2146461907]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inimigo/AreaAtaque" unique_id=598389175]
+shape = SubResource("BoxShape3D_g45jm")

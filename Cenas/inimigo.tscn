@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkfaf8ma7u5u7"]
 
-[ext_resource type="Script" uid="uid://dnrntudidu1ne" path="res://inimigo.gd" id="1_030df"]
+[ext_resource type="Script" uid="uid://dnrntudidu1ne" path="res://Codigos/inimigo.gd" id="1_030df"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1su0k"]
 

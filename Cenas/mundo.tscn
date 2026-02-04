@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u75fhg1u8nbe"]
 
-[ext_resource type="PackedScene" uid="uid://csvetve6duuh4" path="res://player.tscn" id="1_6ba58"]
-[ext_resource type="PackedScene" uid="uid://dkfaf8ma7u5u7" path="res://inimigo.tscn" id="1_lgngo"]
+[ext_resource type="PackedScene" uid="uid://csvetve6duuh4" path="res://Cenas/player.tscn" id="1_6ba58"]
+[ext_resource type="PackedScene" uid="uid://dkfaf8ma7u5u7" path="res://Cenas/inimigo.tscn" id="1_lgngo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xwo6f"]
 size = Vector3(20, 1, 20)

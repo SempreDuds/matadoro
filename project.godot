@@ -13,7 +13,7 @@ config_version=5
 config/name="Matadoro"
 run/main_scene="uid://u75fhg1u8nbe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Sources/icon.svg"
 
 [global_group]
 

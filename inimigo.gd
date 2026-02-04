@@ -1,62 +1,59 @@
 extends CharacterBody3D
 
 @export var speed = 3.5
-@export var damage = 5
-@export var health = 30
+@export var damage = 10
+@export var health = 50
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var player = null # Vai guardar a referência do jogador
+var player = null
+@onready var texto_vida = $Label3D # Referência ao texto
 
 func _ready():
-	# Tenta encontrar o player na cena principal
-	# Nota: Isso assume que o player é o único nó no grupo "player" na cena
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
+	atualizar_texto_vida()
 
 func _physics_process(delta):
-	# Gravidade
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
 	if player:
-		# Lógica simples de perseguição
 		var direcao = (player.global_position - global_position).normalized()
-		
-		# Ignora o eixo Y para ele não tentar voar ou cavar
 		direcao.y = 0 
 		
 		velocity.x = direcao.x * speed
 		velocity.z = direcao.z * speed
 		
-		# Faz o inimigo olhar para o player
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
 	move_and_slide()
-	
-	# Verificar se encostou no player para dar dano
 	verificar_ataque()
 
 func verificar_ataque():
-	# Usamos a AreaAtaque para saber se o player está perto
 	var corpos = $AreaAtaque.get_overlapping_bodies()
 	for corpo in corpos:
 		if corpo.is_in_group("player"):
 			if corpo.has_method("receber_dano"):
+				# Empurrão para trás para dar tempo ao jogador
+				var empurrao = (global_position - corpo.global_position).normalized() * 10
+				velocity += empurrao
 				corpo.receber_dano(damage)
-				# Empurra o inimigo para trás para não dar dano infinito instantâneo
-				velocity = -transform.basis.z * 10 
 
 func receber_dano(qtd):
 	health -= qtd
-	print("Inimigo tomou ", qtd, " de dano. Vida: ", health)
+	atualizar_texto_vida()
 	
-	# Efeito visual de hit (piscar ou pular)
-	position.y += 0.5 
+	# Efeito visual (pulinho ao tomar dano)
+	velocity.y = 3 
 	
 	if health <= 0:
 		morrer()
 
+func atualizar_texto_vida():
+	# Muda o texto do Label3D
+	if texto_vida:
+		texto_vida.text = "HP: " + str(health)
+
 func morrer():
-	print("Inimigo morreu!")
-	queue_free() # Remove o inimigo do jogo
+	queue_free()

@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var run_speed = 15.0
 @export var jump_velocity = 6
 @export var sensibilidade_mouse = 0.003
-@export var max_health = 100
+@export var max_health = 15000
 
 var current_health = 100
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

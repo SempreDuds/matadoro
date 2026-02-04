@@ -16,6 +16,21 @@ size = Vector3(0.5, 1, 0.3)
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1004927415 groups=["player"]]
 script = ExtResource("1_4flbx")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1411432893]
+
+[node name="Control" type="Control" parent="Player/CanvasLayer" unique_id=1740918383]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Player/CanvasLayer/Control" unique_id=1672144825]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 27.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1608348888]
 shape = SubResource("CapsuleShape3D_i3pqv")
 
